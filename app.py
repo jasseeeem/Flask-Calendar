@@ -76,6 +76,6 @@ def delete(id):
 def view(id):
     eventView = Calendar.query.filter_by(id=id).first()
     return render_template('view.html', eventView=eventView, title='View Event')
-
+ 
 if __name__ == '__main__':
     app.run(debug=True)
