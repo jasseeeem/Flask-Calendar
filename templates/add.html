@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <form action="{{ url_for('add') }}", name="AddForm", method='POST'>
+        {{ form.event.label }} {{ form.event }}
+        <br>
+        {{ form.csrt_token }}
+        {{ form.date.label }} {{ form.date(class='datepicker') }} {{ form.hidden_tag()}}
+        <p>
+            {{ form.submit() }}
+        </p>
+
+    </form>
+{% endblock %}

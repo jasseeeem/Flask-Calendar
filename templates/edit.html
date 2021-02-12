@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <form action="{{ url_for('edit', id=id)}}", name="EditForm", method='POST'>
+        {{ form.event.label }} <input type="text" name="event" value='{{ Calendar.query.filter_by(id=id).first().event }}' />
+        <br>
+        {{ form.csrt_token }}
+        {{ form.date.label }} <input class="datepicker" id="date" name="date" required type="date" value='{{ Calendar.query.filter_by(id=id).first().date }}'> {{ form.hidden_tag()}}
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+{% endblock %}

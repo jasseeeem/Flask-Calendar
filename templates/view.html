@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <button class="btn btn-primary" onclick="document.location = '{{url_for('edit', id=eventView.id) }}'">Edit</button>
+    <button class="btn btn-danger" onclick="document.location = '{{ url_for('delete', id=eventView.id) }}'">Delete</button>
+    <h2>Title: {{ eventView.event }}</h2>
+    <h2>Date: {{ eventView.date }}</h2>
+
+{% endblock %}

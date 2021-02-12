@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+<div id="top-button">
+    <button class="btn btn-primary" onclick="document.location = '/add'">Add a new event</button>
+</div>
+<div id="calendar">
+    <script>
+        let calendarEl = document.getElementById('calendar');
+        let calendar = new FullCalendar.Calendar(calendarEl, {
+            eventClick: function(info) {
+                var eventObj = info.event;
+                window.open(eventObj.id + '/view');
+            },
+            events:
+            [{% for e in events %}
+            {
+                id: '{{e.id}}',
+                title: '{{e.event}}',
+                start: '{{e.date}}',
+            },
+            {% endfor %}]
+        });
+        calendar.render();
+    </script>
+</div>
+{% endblock %}
